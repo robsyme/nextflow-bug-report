@@ -4,8 +4,6 @@ nextflow.preview.dsl=2
 import Dog
 
 process NoTag {
-    executor 'local'
-
     input:
     val(dog)
 
@@ -14,7 +12,6 @@ process NoTag {
 
 process TagUsesField {
     tag { dog.name }
-    executor 'local'
 
     input:
     val(dog)
@@ -24,7 +21,6 @@ process TagUsesField {
 
 process TagUsesMethod {
     tag { dog }
-    executor 'local'
 
     input:
     val(dog)
