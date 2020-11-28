@@ -11,7 +11,7 @@ process NoTag {
 }
 
 process TagUsesField {
-    tag { dog.name }
+    tag "${dog.name}"
 
     input:
     val(dog)
@@ -20,7 +20,7 @@ process TagUsesField {
 }
 
 process TagUsesMethod {
-    tag { dog }
+    tag "${dog.toString()}"
 
     input:
     val(dog)
