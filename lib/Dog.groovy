@@ -1,21 +1,13 @@
-import nextflow.util.CacheFunnel
-import nextflow.util.CacheHelper
-import com.google.common.hash.Hasher
-import nextflow.util.CacheHelper.HashMode
+import nextflow.io.ValueObject
 
-class Dog implements Serializable, CacheFunnel {
+import nextflow.util.KryoHelper
+
+@ValueObject
+class Dog  {
+
+    static {
+        KryoHelper.register(Dog)
+    }
+
     String name
-
-    String toString() {
-        "Dog"
-    }
-
-    @Override
-    public int hashCode() {
-        return name.hashCode()
-    }
-
-    Hasher funnel(Hasher hasher, HashMode mode) {
-        return CacheHelper.hasher(hasher, this.name, mode)
-    }
 }
